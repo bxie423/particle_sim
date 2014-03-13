@@ -1,0 +1,29 @@
+A simulation configuration file is split into three sections, marked CONFIG, GLOBAL, and LOCAL, which must be in order.  Comments begin with a pound sign, and extend for the entire line.  The first section specifies paramaters for the simulation.  The possible parameters to adjust are
+
+CONFIG
+
+SIMTIME - The time that the simulation will run for, in seconds.  This parameter can be a decimal number.
+TIMESTEP - The time taken between each step of the simulation, in microseconds.  Recommended timestep is 10 microseconds.  Should be an integer.
+WRITEFREQ - How frequently the coordinate file is written to, in microseconds.  Recommended write frequency is 2500 microseconds.  Should be an integer.
+
+Any other settings will create an error.  The parameter is set by writing the variable name, followed by whitespace, followed by its value.
+
+NOTE: Collision detection relies on the TIMESTEP being small enough such that there is at least one frame in which two particles overlap.  If this is not satisfied, then the collision will fail to be detected.
+
+GLOBAL
+
+The second section specifies global forces, which are felt by every particle in the simulation.  These are specified by a whitespace-separated line consisting in the following form
+
+FORCE XSTRENGTH YSTRENGTH ZSTRENGTH
+
+The value of FORCE can be either GRAVITY, EFIELD, or BFIELD.  The value of AXIS can be either X, Y, or Z.  The value of DIRECTION is either POS or NEG.  The value of {X,Y,Z}STRENGTH is a numerical value, which specifies either the acceleration due to gravity in meters per second, the electric field strength in Newtons per Coulomb, or magnetic field strength, in Teslas.
+
+If more than one gravity force is specified, then the latest gravity force will be specified.
+
+LOCAL
+
+The third section specifies local forces, which are felt by particles only in a box-shaped region.  This is specified similarly to the global forces, except GRAVITY cannot be specified here, and the form of a line is
+
+FORCE AXIS DIRECTION STRENGTH X1 Y1 Z1 X2 Y2 Z2
+
+where X1 Y1 Z1 and X2 Y2 Z2 specify the corners of the box-shaped region.  X1 must be less than X2, Y1 must be less than Y2, and Z1 must be less than Z2.

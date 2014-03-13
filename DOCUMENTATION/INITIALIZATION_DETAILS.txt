@@ -1,0 +1,16 @@
+The initialization file contains a list of particles, with their attributes in a tab-separated format.  Comments begin with a pound sign and span the entire line.  The proper format for a particle is the particle declaration, followed by tab-separated variable-value pairs.
+
+PARTICLE
+{
+MASS		(in kilograms)
+CHARGE		(in Coulombs)
+RADIUS		(in meters)
+XPOS		(in meters)
+YPOS		(in meters)
+ZPOS		(in meters)
+XVEL		(in meters per second)
+YVEL		(in meters per second)
+ZVEL		(in meters per second)
+}
+
+Note that MASS and RADIUS should be non-zero numbers, or else the simulation results will be rather useless.  The parameters do not have to be specified in order, but they must all be present.
