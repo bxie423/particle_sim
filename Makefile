@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-std=c99 -Wall
+CFLAGS=-std=c99 -Wall -O3
 LDFLAGS=-lm
 SRC=parseinput.c collision.c simulation.c main.c
 OBJ=parseinput.o collision.o simulation.o main.o
